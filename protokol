@@ -27,6 +27,7 @@ case "$1" in
     998)
 	cd $HOME
 	clear
+    termux-vibrate
 	echo "Şifre Yanlış!"
 	tusername="TerUN"
 	true_pw="Password"
