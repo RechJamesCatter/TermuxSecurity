@@ -1,0 +1,72 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+# Parametre kontrolü
+if [ -z "$1" ]; then
+    echo "Kullanım: protokol <protokol kodu>"
+    exit 1
+fi
+
+case "$1" in
+    000)
+        clear
+        echo -e "\e[1;31m$(figlet IMHA)\e[0m"
+        echo "İmha Protokolu Başlatıldı."
+        for i in {30..1}
+        do
+            echo -ne "Kalan süre: $i saniye\r"
+            sleep 1
+        done
+        echo -e "\nTüm Veriler Silindi"
+        echo -e "\nGörüşürüz Efendim..."
+        ;;
+    121)
+        clear
+        echo "Protokol Başlatıldı."
+        termux-wake-lock
+        termux-open-url https://reasas.gamer.gd
+        ;;
+    999)
+        true_pw="Password"
+        trap '' SIGINT
+	echo -n "Şifreyi gir: "
+	read entry_pw
+	if [ "$entry_pw" == "$true_pw" ]; then
+	    cd $HOME
+	    clear
+	    trap - SIGINT
+	    neofetch
+	    echo "Şifreniz Doğru!"
+	    echo "Hoşgeldiniz RJC@localhost"
+
+	else
+	    protokol 998
+	fi
+        ;;
+    998)
+	cd $HOME
+	clear
+	echo "Şifre Yanlış!"
+	tusername="TerUN"
+	true_pw="Password"
+	echo -n "Şifreyi Gir: "
+	read entry_pw
+	if [ "$entry_pw" == "$true_pw" ]; then
+            cd $HOME
+            clear
+	    trap - SIGINT
+            neofetch
+            echo "Şifreniz Doğru!"
+            echo "Hoşgeldiniz "$tusername"@localhost"
+
+        else
+            protokol 998
+       fi
+       ;;
+    numara)
+        echo "Protokol 986 çalıştı"
+        # BURAYA 986 İÇİN ÇALIŞACAK KOD
+        ;;
+    *)
+        echo "Bilinmeyen protokol: $1"
+        ;;
+esac
