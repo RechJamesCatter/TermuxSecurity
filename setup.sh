@@ -1,4 +1,5 @@
 pkg install figlet
+pkg install termux-api
 pkg install neofetch
 echo -e "\e[1;31m$(figlet KURULUM)\e[0m"
 #unzip TermuxSecurity.zip
